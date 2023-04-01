@@ -1,0 +1,310 @@
+{
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {},
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
+  },
+  "[stylus]": {
+    "editor.formatOnSave": true
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "cSpell.diagnosticLevel": "Hint",
+  "cSpell.enableFiletypes": [
+    "asciidoc",
+    "c",
+    "cpp",
+    "csharp",
+    "css",
+    "git-commit",
+    "go",
+    "handlebars",
+    "haskell",
+    "html",
+    "jade",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "plaintext",
+    "pug",
+    "python",
+    "restructuredtext",
+    "rust",
+    "scala",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+    "yml"
+  ],
+  "css.hover.references": false,
+  "css.lint.important": "error",
+  "css.validate": false,
+  "debug.toolBarLocation": "docked",
+  "editor.accessibilitySupport": "off",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "editor.colorDecorators": false,
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "off",
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 3,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "'Operator Mono Lig', 'Operator Mono', 'Dank Mono', 'Fira Code', 'Cascadia Code', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.fontWeight": "300",
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.highlightActiveBracketPair": true,
+  "editor.guides.indentation": false,
+  "editor.hover.delay": 600,
+  "editor.hover.enabled": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.inlineSuggest.enabled": true,
+  "editor.letterSpacing": 0.5,
+  "editor.lineHeight": 1.7,
+  "editor.linkedEditing": true,
+  "editor.minimap.enabled": false,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.showSlider": "always",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.parameterHints.cycle": false,
+  "editor.parameterHints.enabled": false,
+  "editor.quickSuggestionsDelay": 5,
+  "editor.renderWhitespace": "none",
+  "editor.scrollbar.verticalScrollbarSize": 20,
+  "editor.snippetSuggestions": "top",
+  "editor.tabSize": 2,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "entity.other.attribute-name",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "support.type.property-name.css",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      }
+    ]
+  },
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 120,
+  "emmet.includeLanguages": {
+    "nunjucks": "html",
+    "njk": "html",
+    "javascript": "css,javascriptreact,typescriptreact, svelte"
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.triggerExpansionOnTab": true,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "errorLens.exclude": ["never (read|used)", "Unknown word"],
+  "errorLens.fontSize": "12",
+  "errorLens.onSave": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.packageManager": "yarn",
+  "eslint.validate": [
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascripreact"
+  ],
+  "explorer.confirmDragAndDrop": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": ".env.*, .eslintrc, .eslintrc.*, .eslint*, .gitattributes, .gitignore, .npmrc, .prettierignore, .prettierrc, prettier.config.js, jsconfig.json, .yarnrc, next-env.d.ts, next.config.js, package-lock.json , pnpm-lock.yaml, svelte.config.js, yarn.lock, tailwind.config.cjs, postcss.config.cjs, tailwind.config.js, postcss.config.js, TODO, .env, vite.config.*, .markdownlint.json",
+    "tsconfig.json": "tsconfig.*.json",
+    "*.ts": "$(capture).js, $(capture).d.ts, $(capture).test.ts",
+    "*.js": "$(capture).js.map, $(capture).min.js, $(capture).d.ts",
+    "*.jsx": "$(capture).js",
+    "*.tsx": "$(capture).ts, $(capture).test.tsx",
+    "+layout.svelte": "+layout.js, +layout.ts, +layout.server.js, +layout.server.ts",
+    "+page.svelte": "+page.js, +page.ts, +page.server.js, +page.server.ts"
+  },
+  "explorer.openEditors.visible": 4,
+  "files.associations": {},
+  "files.exclude": {
+    "**/.cache": true,
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/bower_components": true,
+    "**/jspm_packages": true,
+    "**/node_modules": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false
+  },
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false
+  },
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.keymap": "none",
+  "html.hover.references": false,
+  "indentRainbow.colors": [
+    "rgba(225, 89, 128, 0.075)",
+    "rgba(123, 216, 143, 0.075)",
+    "rgba(227, 207, 94, 0.075)",
+    "rgba(122, 115, 184, 0.075)"
+  ],
+  "javascript.format.enable": false,
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.preferences.useAliasesForRenames": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "less.hover.references": false,
+  "liveshare.guestApprovalRequired": true,
+  "php.validate.enable": false,
+  "prettier.ignorePath": ".prettierignore~/.prettierrc.json",
+  "python.analysis.extraPaths": [
+    "/Users/philsinatra/Library/Python/3.9/lib/python/site-packages"
+  ],
+  "python.formatting.blackArgs": ["--line-length", "88"],
+  "python.formatting.provider": "none",
+  "python.linting.enabled": true,
+  "quokka.automaticRestart": true,
+  "scss.hover.references": false,
+  "scss.lint.unknownAtRules": "ignore",
+  "security.workspace.trust.untrustedFiles": "open",
+  "svelte.ask-to-enable-ts-plugin": true,
+  "svelte.enable-ts-plugin": true,
+  "svelte.plugin.css.completions.emmet": true,
+  "svelte.plugin.html.completions.emmet": true,
+  "svelte.plugin.svelte.note-new-transformation": false,
+  "svelte.plugin.typescript.enable": true,
+  "sync.gist": "5d9b65e4514348313e9bc1321708cee0",
+  "telemetry.telemetryLevel": "off",
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.defaultProfile.osx": "fish",
+  "terminal.integrated.fontFamily": "'PowerlineSymbols','Fira Code', 'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.gpuAcceleration": "off",
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.lineHeight": 1.4,
+  "totalTypeScript.hiddenTips": [
+    "type-alias-declaration",
+    "ts-object-type",
+    "optional-object-property",
+    "basic-types",
+    "array-type",
+    "variable-type-annotation",
+    "typing-function-parameters",
+    "union-type",
+    "null-keyword",
+    "literal-type",
+    "interface-declaration"
+  ],
+  "totalTypeScript.hideAllTips": false,
+  "totalTypeScript.hideBasicTips": false,
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.preferences.useAliasesForRenames": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vsicons.dontShowNewVersionMessage": true,
+  "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
+  "workbench.colorCustomizations": {
+    "[Default Dark+]": {
+      "statusBar.background": "#010101"
+    },
+    "[Level Up]": {
+      "activityBar.foreground": "#898097",
+      "list.focusBackground": "#30273e",
+      "sideBar.foreground": "#898097"
+    },
+    "[Cobalt2]": {
+      "editor.background": "#163042"
+    },
+    "[Minimal Fedu]": {
+      "tab.activeBackground": "#4e4e4e",
+      "editor.lineHighlightBackground": "#37373e",
+      "editorLineNumber.foreground": "#444",
+      "sideBar.foreground": "#888",
+      "tab.inactiveForeground": "#888"
+    },
+    "[Dark (Molokai)]": {
+      "statusBar.background": "#010101"
+    },
+    "[Svelte Dark]": {
+      "statusBar.background": "#030303"
+    },
+    "errorLens.hintForeground": "#ffc600A1",
+    "errorLens.hintBackground": "#ffc60003",
+    "errorLens.errorBackground": "#ff000005"
+  },
+  "workbench.colorTheme": "Default Dark+ Experimental",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.labelFormat": "short",
+  "workbench.editor.showTabs": false,
+  "workbench.editor.tabCloseButton": "off",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "workbench.fontAliasing": "auto",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.statusBar.visible": true
+}
