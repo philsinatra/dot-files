@@ -187,6 +187,20 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+function tmux-3up-1down() {
+  tmux new-window \; \
+    split-window -v -p 20 \; \
+    select-pane -t 0 \; \
+    split-window -h \; \
+    split-window -h \; \
+    select-pane -t 0 \; \
+    resize-pane -x "25%" \; \
+    select-pane -t 2 \; \
+    resize-pane -x "25%"
+}
+
+alias t3='tmux-3up-1down'
+
 export PATH="$HOME/.local/bin:$PATH"
 
 # opencode
@@ -194,3 +208,14 @@ export PATH=/home/pjs/.opencode/bin:$PATH
 
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# bun completions
+[ -s "/home/pjs/.bun/_bun" ] && source "/home/pjs/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+. "$HOME/.local/share/../bin/env"
+
+alias claude-mem='/home/pjs/.bun/bin/bun "/home/pjs/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
