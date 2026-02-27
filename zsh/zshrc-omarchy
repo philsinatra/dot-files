@@ -189,14 +189,12 @@ function y() {
 
 function tmux-3up-1down() {
   tmux new-window \; \
-    split-window -v -p 20 \; \
+    split-window -v -l "20%" \; \
+    swap-pane -U \; \
     select-pane -t 0 \; \
-    split-window -h \; \
-    split-window -h \; \
-    select-pane -t 0 \; \
-    resize-pane -x "25%" \; \
-    select-pane -t 2 \; \
-    resize-pane -x "25%"
+    split-window -h -l "75%" \; \
+    split-window -h -l "33%" \; \
+    select-pane -t 0
 }
 
 alias t3='tmux-3up-1down'
