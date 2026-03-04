@@ -109,9 +109,8 @@ source $ZSH/oh-my-zsh.sh
 alias dt="cd ~/Desktop"
 alias dl="cd ~/Downloads"
 alias dc="cd ~/Documents"
-alias nv="nvim "
+# alias nv="nvim "
 alias mamp="/Applications/MAMP/Library/bin/mysql80/bin/mysql --host=localhost --port=8889 -u root -proot"
-alias tn="tmux new"
 
 # eza (Modern ls replacement)
 alias ls='eza'
@@ -121,6 +120,15 @@ alias lt='eza --tree --level=2'    # Directory tree
 alias lzg='lazygit'
 alias lzs='lazysql'
 alias md='ekphos'
+
+alias c='opencode'
+alias cx='printf "\033[2J\033[3J\033[H" && claude'
+# alias cx='printf "\033[2J\033[3J\033[H" && claude --allow-dangerously-skip-permissions'
+# alias tn="tmux new"
+alias t='tmux attach || tmux new -s Work'
+n() { if [ "$#" -eq 0 ]; then command nvim . ; else command nvim "$@"; fi; }
+
+alias claude-mem='bun "/Users/philipsinatra/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
 
 # fd (Modern find)
 alias find='fd'
@@ -208,4 +216,66 @@ export EDITOR=nvim
 # mise (runtime version manager)
 eval "$(~/.local/bin/mise activate zsh)"
 
-alias claude-mem='bun "/Users/philipsinatra/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+# Tmux Developer Layout (tdl) - Omarchy-style port for macOS / Zsh
+# NEW LAYOUT: AI agents stacked on the LEFT | Neovim (full height) on the RIGHT
+# Usage:
+#   tdl c          → OpenCode (left, full height) + big Neovim (right)
+#   tdl c cx       → Left column: OpenCode (top) + safe Claude (cx, bottom) | big Neovim (right)
+#   tdl codex      → Same layout with Codex (or any agent)
+# Customize EDITOR_WIDTH_PERCENT below if you want more/less space for Neovim.
+tdl() {
+  # ================== CONFIG ==================
+  local EDITOR_WIDTH_PERCENT=65     # ← Neovim width (bigger = 70–75, smaller agents = 60)
+  # ===========================================
+
+  # Create project-specific session name
+  local project_name
+  project_name=$(basename "$PWD")
+  project_name=${project_name//[^a-zA-Z0-9_-]/_}
+  local session_name="dev-${project_name}"
+
+  local agent1="${1:-c}"
+  local agent2="$2"
+
+  # If outside tmux → create/attach the project session
+  if [[ -z "$TMUX" ]]; then
+    if ! tmux has-session -t "$session_name" 2>/dev/null; then
+      tmux new-session -d -s "$session_name" -c "$PWD" -n "dev"
+    fi
+    tmux attach-session -t "$session_name"
+    return 0
+  fi
+
+  # === Inside tmux: build the exact layout ===
+  tmux new-window -n "dev" -c "$PWD"
+
+  # 1. Split horizontally: Left (AI column) | Right (Neovim full height)
+  tmux split-window -h -c "$PWD" -p "$EDITOR_WIDTH_PERCENT" -t 0
+
+  if [[ -n "$agent2" ]]; then
+    # 2. Split LEFT column vertically
+    tmux split-window -v -c "$PWD" -p 50 -t 0
+
+    # Pane layout is now guaranteed:
+    #   0 = Top-left     → OpenCode (c)
+    #   1 = Bottom-left  → Claude (cx)
+    #   2 = Right        → Neovim (n) full height
+
+    # Tiny delays prevent race conditions (agent CLIs take ~300ms to start)
+    sleep 0.25
+    tmux send-keys -t 0 "$agent1" Enter
+    sleep 0.35
+    tmux send-keys -t 1 "$agent2" Enter   # ← now correctly targets bottom-left
+    sleep 0.25
+    tmux send-keys -t 2 "n" Enter         # ← now correctly targets right pane
+
+    tmux select-pane -t 2                 # Focus Neovim on the right
+  else
+    # Single-agent fallback (left = agent | right = Neovim)
+    sleep 0.25
+    tmux send-keys -t 0 "$agent1" Enter
+    sleep 0.25
+    tmux send-keys -t 1 "n" Enter
+    tmux select-pane -t 1
+  fi
+}
