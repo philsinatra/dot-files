@@ -124,8 +124,8 @@ alias md='ekphos'
 alias c='opencode'
 alias cx='printf "\033[2J\033[3J\033[H" && claude'
 # alias cx='printf "\033[2J\033[3J\033[H" && claude --allow-dangerously-skip-permissions'
-# alias tn="tmux new"
-alias t='tmux attach || tmux new -s Work'
+alias t="tmux new"
+# alias t='tmux attach || tmux new -s Work'
 n() { if [ "$#" -eq 0 ]; then command nvim . ; else command nvim "$@"; fi; }
 
 alias claude-mem='bun "/Users/philipsinatra/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
