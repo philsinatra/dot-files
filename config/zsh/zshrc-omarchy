@@ -112,11 +112,16 @@ export PATH="$HOME/.local/share/mise/shims:$PATH"
 alias dt="cd ~/Desktop"
 alias dl="cd ~/Downloads"
 alias dc="cd ~/Documents"
-alias nv="nvim "
+# alias nv="nvim "
 alias pbcopy="wl-copy"
-alias tn="tmux new"
+alias t="tmux new"
 alias md="ekphos"
 alias drexel-vpn='sudo -E QTWEBENGINE_CHROMIUM_FLAGS="--no-sandbox" openconnect-sso --server vpn.drexel.edu --user ps42@drexel.edu'
+
+alias c='opencode'
+alias cx='printf "\033[2J\033[3J\033[H" && claude'
+
+n() { if [ "$#" -eq 0 ]; then command nvim . ; else command nvim "$@"; fi; }
 
 ### eza (Modern ls replacement)
 alias ls='eza'
