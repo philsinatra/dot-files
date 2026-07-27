@@ -1,0 +1,246 @@
+# herdr configuration — mapped from ~/.config/herdr/tmux.conf
+# Place this file at ~/.config/herdr/config.toml
+#
+# Concept map (tmux → herdr):
+#   session  → workspace
+#   window   → tab
+#   pane     → pane
+#
+# Limitations vs tmux.conf:
+#   - Herdr has a single prefix (tmux: C-Space primary + C-b secondary).
+#   - No direct pane-resize chords (tmux: C-M-S-arrows); use resize_mode or mouse.
+#   - No tab reorder/swap bindings (tmux: M-S-Left/Right).
+#   - Copy-mode vi chords (v/y) are built into Herdr copy mode, not configured here.
+
+# Show first-run notification setup on startup.
+# onboarding = true
+
+[theme]
+# Built-in themes: catppuccin, terminal, tokyo-night, dracula, nord,
+#                  gruvbox, one-dark, solarized, kanagawa, rose-pine,
+#                  vesper
+# name = "catppuccin"
+
+# Follow host terminal light/dark appearance and switch Herdr UI themes.
+# auto_switch = false
+# dark_name = "catppuccin"
+# light_name = "catppuccin-latte"
+
+# Override individual color tokens on top of the base theme.
+# [theme.custom]
+# panel_bg = "reset"
+# accent = "#f5c2e7"
+
+[terminal]
+# Executable used for new interactive panes.
+# default_shell = ""
+
+# Startup mode for new interactive pane shells: "auto", "login", or "non_login".
+# shell_mode = "auto"
+
+# tmux: split/new-window/new-session use -c "#{pane_current_path}"
+new_cwd = "follow"
+
+[update]
+# channel = "stable"
+# version_check = true
+# manifest_check = true
+
+[keys]
+# tmux: set -g prefix C-Space  (prefix2 C-b has no Herdr equivalent)
+prefix = "ctrl+space"
+
+# --- Session / global (tmux general + status helpers) ---
+# tmux: bind q source-file ...
+reload_config = "prefix+q"
+# tmux default detach is prefix+d (herdr default was prefix+q, now used for reload)
+detach = "prefix+d"
+help = "prefix+?"
+settings = "prefix+s"
+workspace_picker = "prefix+w"
+goto = "prefix+g"
+toggle_sidebar = "prefix+p"
+open_notification_target = "prefix+o"
+
+# --- Workspaces ≈ tmux sessions ---
+# tmux: bind C new-session
+new_workspace = "prefix+shift+c"
+# tmux: bind R command-prompt rename-session
+rename_workspace = "prefix+shift+r"
+# tmux: bind K kill-session
+close_workspace = "prefix+shift+k"
+# tmux: bind P / N switch-client -p/-n ; bind -n M-Up / M-Down
+previous_workspace = ["prefix+shift+p", "alt+up"]
+next_workspace = ["prefix+shift+n", "alt+down"]
+# new_worktree = "prefix+shift+g"
+# open_worktree = ""
+# remove_worktree = ""
+# previous_agent = ""
+# next_agent = ""
+# focus_agent = ""
+# switch_workspace = ""
+# remote_image_paste = "ctrl+v"
+
+# --- Tabs ≈ tmux windows ---
+# tmux: bind c new-window
+new_tab = "prefix+c"
+# tmux: bind r command-prompt rename-window
+rename_tab = "prefix+r"
+# tmux: bind k kill-window
+close_tab = "prefix+k"
+# tmux: bind -n M-1..9 select-window
+switch_tab = "alt+1..9"
+# tmux: bind -n M-Left / M-Right select-window -t -1/+1
+previous_tab = "shift+left"
+next_tab = "shift+right"
+
+# --- Panes ---
+# tmux split-window -v (stack top/bottom) → herdr split_horizontal
+# tmux: bind -n M-Enter ; bind h ; bind '"'
+split_horizontal = ["alt+enter", "prefix+h", "prefix+quote"]
+# tmux split-window -h (side by side) → herdr split_vertical
+# tmux: bind -n M-S-Enter ; bind v ; bind %
+split_vertical = ["alt+shift+enter", "prefix+v", "prefix+percent"]
+# tmux: bind -n M-Escape kill-pane ; bind x kill-pane
+close_pane = ["alt+escape", "prefix+x"]
+# tmux: bind -n C-M-Left/Right/Up/Down select-pane
+# focus_pane_left = "ctrl+alt+left"
+# focus_pane_right = "ctrl+alt+right"
+# focus_pane_up = "ctrl+alt+up"
+# focus_pane_down = "ctrl+alt+down"
+focus_pane_left = "alt+h"
+focus_pane_right = "alt+l"
+focus_pane_up = "alt+k"
+focus_pane_down = "alt+j"
+
+# Herdr-only pane actions (no tmux.conf equivalent). Kept on free chords.
+# Note: prefix+shift+k is close_workspace (tmux kill-session), so swap-up is not
+# the herdr default prefix+shift+k.
+swap_pane_left = "prefix+shift+h"
+swap_pane_down = "prefix+shift+j"
+swap_pane_up = "prefix+shift+u"
+swap_pane_right = "prefix+shift+l"
+cycle_pane_next = "prefix+tab"
+cycle_pane_previous = "prefix+shift+tab"
+# last_pane = ""
+zoom = "prefix+z"
+# tmux uses C-M-S-arrows for resize; herdr only has resize mode.
+# Free prefix+r for rename_tab (tmux bind r).
+resize_mode = "prefix+="
+# tmux: setw -g mode-keys vi + copy-mode-vi v/y (vi keys are built into copy mode)
+copy_mode = "prefix+["
+edit_scrollback = "prefix+e"
+# Moved off prefix+shift+p so previous_workspace can match tmux bind P
+rename_pane = "prefix+comma"
+
+# Navigate-mode movement (Herdr surface only; independent from focus_pane_*).
+# navigate_workspace_up = "up"
+# navigate_workspace_down = "down"
+# navigate_pane_left = "h"
+# navigate_pane_down = "j"
+# navigate_pane_up = "k"
+# navigate_pane_right = "l"
+
+# Custom commands (optional examples)
+# [[keys.command]]
+# key = "prefix+alt+g"
+# type = "popup"
+# command = "lazygit"
+# width = "80%"
+# height = "80%"
+
+# Legacy indexed shortcut config — prefer switch_tab / switch_workspace / focus_agent.
+# [keys.indexed]
+# tabs = ""
+# workspaces = ""
+# agents = ""
+
+# [worktrees]
+# directory = "~/.herdr/worktrees"
+
+[ui]
+# sidebar_width = 26
+# sidebar_min_width = 18
+# sidebar_max_width = 36
+# sidebar_start_collapsed = false
+# sidebar_collapsed_mode = "compact"
+# mobile_width_threshold = 64
+
+# tmux: set -g mouse on
+mouse_capture = true
+
+# tmux: set -g set-clipboard on
+copy_on_select = true
+
+# host_cursor = "auto"
+# right_click_passthrough_modifier = ""
+
+# tmux: set -g focus-events on
+redraw_on_focus_gained = true
+
+# mouse_scroll_lines = 3
+
+# tmux kills panes/windows/sessions without confirmation prompts
+confirm_close = false
+
+# tmux creates windows/sessions immediately; rename is a separate bind
+prompt_new_tab_name = false
+prompt_new_workspace_name = false
+
+# tmux: pane borders active=blue, inactive=brightblack
+pane_borders = true
+# pane_gaps = true
+# show_agent_labels_on_pane_borders = false
+# hide_tab_bar_when_single_tab = false
+# agent_panel_sort = "spaces"
+
+# [ui.sidebar.agents]
+# row_gap = 0
+# rows = [["state_icon", "workspace", "tab"], ["agent"]]
+
+# [ui.sidebar.spaces]
+# row_gap = 0
+# rows = [["state_icon", "workspace"], ["branch", "git_status"]]
+
+# tmux theme accent is blue
+accent = "blue"
+
+[ui.toast]
+# delivery = "off"
+# delay_seconds = 1
+
+[ui.toast.herdr]
+# position = "bottom-right"
+
+[ui.toast.clipboard]
+# enabled = true
+# position = "bottom-center"
+
+[ui.sound]
+# enabled = true
+# path = "sounds/notification.mp3"
+# done_path = "sounds/done.mp3"
+# request_path = "sounds/request.mp3"
+
+# [ui.sound.agents]
+# droid = "off"
+
+[session]
+# resume_agents_on_restore = true
+
+[remote]
+# manage_ssh_config = true
+
+[experimental]
+# allow_nested = false
+# kitty_graphics = false
+# Save recent pane screen history across full server restarts.
+pane_history = false
+# switch_ascii_input_source_in_prefix = false
+# reveal_hidden_cursor_for_cjk_ime = false
+# cjk_ime_agents = []
+# cjk_ime_cursor_shape = "steady_block"
+
+[advanced]
+# tmux: set -g history-limit 50000 (Herdr measures scrollback in bytes)
+scrollback_limit_bytes = 25000000
