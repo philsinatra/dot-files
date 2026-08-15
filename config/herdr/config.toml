@@ -1,3 +1,4 @@
+onboarding = false
 # herdr configuration — mapped from ~/.config/herdr/tmux.conf
 # Place this file at ~/.config/herdr/config.toml
 #
@@ -30,6 +31,11 @@
 # [theme.custom]
 # panel_bg = "reset"
 # accent = "#f5c2e7"
+
+[theme.custom]
+# The active tab is drawn as panel_bg text on an accent background, so panel_bg
+# has to be dark for it to read - same colors as status-left's "#[fg=black,bg=blue]"
+panel_bg = "black"
 
 [terminal]
 # Executable used for new interactive panes.
@@ -133,6 +139,10 @@ edit_scrollback = "prefix+e"
 # Moved off prefix+shift+p so previous_workspace can match tmux bind P
 rename_pane = "prefix+comma"
 
+# Like swap-window -t -1/+1 on M-S-Left/Right
+move_tab_previous = "alt+shift+left"
+move_tab_next = "alt+shift+right"
+
 # Navigate-mode movement (Herdr surface only; independent from focus_pane_*).
 # navigate_workspace_up = "up"
 # navigate_workspace_down = "down"
@@ -162,7 +172,7 @@ rename_pane = "prefix+comma"
 # sidebar_width = 26
 # sidebar_min_width = 18
 # sidebar_max_width = 36
-# sidebar_start_collapsed = false
+sidebar_start_collapsed = true 
 sidebar_collapsed_mode = "hidden"
 # mobile_width_threshold = 64
 
@@ -189,10 +199,14 @@ prompt_new_workspace_name = false
 
 # tmux: pane borders active=blue, inactive=brightblack
 pane_borders = true
-# pane_gaps = true
+pane_gaps = false 
+pane_outer_borders = false
+pane_scrollbars = false
 # show_agent_labels_on_pane_borders = false
 hide_tab_bar_when_single_tab = true
 # agent_panel_sort = "spaces"
+
+tab_bar_right = [{ type = "zoom"}, {type = "hostname" }]
 
 # [ui.sidebar.agents]
 # row_gap = 0
